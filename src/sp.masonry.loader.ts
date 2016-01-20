@@ -1,11 +1,14 @@
 /// <reference path="..\typings\tsd.d.ts" />
 module Masonrylizer {    
     export class Initializer {
+        private jqueryversion = "2.2.0";
+        private masonryversion = "4.0.0";
         containerSelector: string;
         itemSelector: string;
         columnWidth: number;
         spacing: number;
         delayLoad: number;
+        loaded = false;
         
         constructor(
             containerSelector: string,
@@ -34,18 +37,23 @@ module Masonrylizer {
                             queue: false
                         }
                     });
+                    this.loaded = true;
                 });
             });
         }
         
+        reflow() {
+            if(!this.loaded) jQuery(this.containerSelector).masonry('layout');
+        }
+        
         private delay(callback : Function) {
-            if(!this.delay) callback();
-            window.setTimeout(callback, this.delay);
+            if(!this.delayLoad) callback();
+            window.setTimeout(callback, this.delayLoad);
         }
         
         private loadScripts(callback : Function) {
-            SP.SOD.registerSod('jquery', `//code.jquery.com/jquery-2.2.0.js`);
-            SP.SOD.registerSod('masonry', `//cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js`);
+            SP.SOD.registerSod('jquery', `//code.jquery.com/jquery-${this.jqueryversion}.js`);
+            SP.SOD.registerSod('masonry', `//cdnjs.cloudflare.com/ajax/libs/masonry/${this.masonryversion}/masonry.pkgd.min.js`);
             SP.SOD.registerSodDep('masonry', 'jquery');
             EnsureScriptFunc("masonry", null, callback);
         }
