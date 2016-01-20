@@ -1,0 +1,20 @@
+{
+  "name": "sp-masonry-initializer",
+  "homepage": "https://github.com/olemp/sp-masonry-initializer",
+  "authors": [
+    "olemp <olemp@puzzlepart.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "typings"
+  ]
+}
