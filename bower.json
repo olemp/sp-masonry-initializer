@@ -5,7 +5,11 @@
     "olemp <olemp@puzzlepart.com>"
   ],
   "description": "",
-  "main": "",
+  "main": [
+       "dist/sp.masonry.loader.js",
+       "dist/sp.masonry.loader.min.js",
+       "dist/sp.masonry.loader.d.ts"
+  ],
   "moduleType": [],
   "license": "MIT",
   "ignore": [
